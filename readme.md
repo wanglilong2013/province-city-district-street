@@ -18,7 +18,7 @@ CREATE TABLE `areas` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
-###2. 修改配置文件
+### 2. 修改配置文件
 
 根据自身情况修改conf.go文件中的数据库配置信息
 
