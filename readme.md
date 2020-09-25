@@ -21,13 +21,14 @@ CREATE TABLE `areas` (
 ###2. 修改配置文件
 
 根据自身情况修改conf.go文件中的数据库配置信息
+
 ```
     MysqlDbUser = "root"  //数据库连接用户名
     MysqlDbPwd  = "root"  //数据库连接密码
     MysqlDbHost = "127.0.0.1"   //数据库连接地址
     MysqlDbPort = 3306   //数据库连接端口
     MysqlDbName = "test"  //数据库名称
-    Key = "XXXX" //高德API KEY,自己去高德开放平台申请
+    Key = "XXXX" //高德API KEY,高德开放平台申请
 ```
 
 ### 3.编译并执行main.go文件
