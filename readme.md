@@ -3,7 +3,7 @@
 
 --------------------------------
 
-### 1. 准备数据库
+### 1. 准备数据表
 
 ```
 CREATE TABLE `areas` (
@@ -15,10 +15,10 @@ CREATE TABLE `areas` (
   `updated_at` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`,`name`),
   KEY `parent_id_index` (`parent_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 ```
 
-###  2. 修改配置文件
+###2. 修改配置文件
 
 根据自身情况修改conf.go文件中的数据库配置信息
 ```
@@ -33,10 +33,15 @@ CREATE TABLE `areas` (
 ### 3.编译并执行main.go文件
 
 
-### 4.数据验证
-```$mysql
-   获取所有省份
-   root@dbn.tff.com:3306 test[2] 16:05:43>select * from areas where level ='province';
+
+#### 4.数据验证
+
+-----------
+
+#### 4.1 获取所有省份
+
+```
+   root@localhost:3306 test[2] 16:05:43>select * from areas where level ='province';
    +--------+--------------------------+-----------+----------+---------------------+---------------------+
    | id     | name                     | parent_id | level    | created_at          | updated_at          |
    +--------+--------------------------+-----------+----------+---------------------+---------------------+
@@ -76,9 +81,12 @@ CREATE TABLE `areas` (
    | 820000 | 澳门特别行政区           |         0 | province | 2020-09-24 15:31:44 | 2020-09-24 15:31:44 |
    +--------+--------------------------+-----------+----------+---------------------+---------------------+
    34 rows in set (0.03 sec)
-    
-    根据省份ID 获取城市数据（四川）
-    root@dbn.tff.com:3306 test[4] 16:06:01>select * from areas where level = 'city' and parent_id =510000;
+   
+   ```
+#### 4.2 根据省份ID获取城市数据（四川）
+   
+```
+    root@localhost:3306 test[4] 16:06:01>select * from areas where parent_id =510000 and level = 'city';
     +--------+-----------------------------+-----------+-------+---------------------+---------------------+
     | id     | name                        | parent_id | level | created_at          | updated_at          |
     +--------+-----------------------------+-----------+-------+---------------------+---------------------+
@@ -106,8 +114,12 @@ CREATE TABLE `areas` (
     +--------+-----------------------------+-----------+-------+---------------------+---------------------+
     21 rows in set (0.00 sec)
     
-    根据城市ID 获取区县数据 （成都）
-    root@dbn.tff.com:3306 test[5] 16:06:54>select * from areas where level = 'district' and parent_id = 510100;
+```
+
+#### 4.3 根据城市ID 获取区县数据 （成都）
+    
+```
+    root@localhost:3306 test[5] 16:06:54>select * from areas where parent_id = 510100 and level = 'district';
     +--------+--------------+-----------+----------+---------------------+---------------------+
     | id     | name         | parent_id | level    | created_at          | updated_at          |
     +--------+--------------+-----------+----------+---------------------+---------------------+
@@ -133,9 +145,13 @@ CREATE TABLE `areas` (
     | 510185 | 简阳市       |    510100 | district | 2020-09-24 15:31:52 | 2020-09-24 15:31:52 |
     +--------+--------------+-----------+----------+---------------------+---------------------+
     20 rows in set (0.00 sec)
+    
+ ```
    
-   根据区县ID 获取街道数据（双流）
-   root@dbn.tff.com:3306 test[6] 16:07:39>select * from areas where level = 'street' and parent_id = 510116;
+#### 4.4 根据区县ID 获取街道数据（双流）
+       
+```  
+   root@localhost:3306 test[6] 16:07:39>select * from areas where parent_id = 510116 and level = 'street';
    +--------+-----------------+-----------+--------+---------------------+---------------------+
    | id     | name            | parent_id | level  | created_at          | updated_at          |
    +--------+-----------------+-----------+--------+---------------------+---------------------+
