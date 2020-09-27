@@ -2,10 +2,10 @@ package main
 
 import (
 	"fmt"
-	"provice-city-area-street/conf"
-	"provice-city-area-street/fetcher"
-	"provice-city-area-street/handler"
-	"provice-city-area-street/parser"
+	"province-city-district-street/conf"
+	"province-city-district-street/fetcher"
+	"province-city-district-street/handler"
+	"province-city-district-street/parser"
 )
 
 func main() {
